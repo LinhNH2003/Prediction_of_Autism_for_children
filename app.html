@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Prediction</title>
+    <style>
+    h1{
+        font-size: 24px;
+        font-family: 'Brush Script MT', sans-serif;
+        margin: 0px 0%;
+        line-height: 1; /* Đảm bảo căn giữa theo chiều dọc */
+        color: red; /* Màu đỏ */
+        font-size: 8em;
+    }
+            
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+    <div class="img"></div>
+
+    <div class="container">
+        <h1>    </h1>
+        <div id="imageInputContainer">
+            <input type="file" id="imageInput" accept=".jpg, .jpeg, .png">
+            <div id="imageContainer"></div>
+        </div>
+        
+        <button onclick="predict()">Predict</button>
+        <div id="result" class="result-container">
+            <p id="Result: ">Class:</p>
+            <p id="Accuracy: ">Confidence:</p>
+        </div>
+    <!---
+        <video id="myVidPlayer" controls muted autoplay></video>
+        
+        <button onclick="snapshot()" >Snapshot</button>
+        
+        <div class="mycanvas">
+            <h6>Captured snapshot</h6>
+            <canvas></canvas>
+        </div>
+
+    <div id="container">
+        <video id="myVidPlayer" autoplay muted></video>
+        <canvas id="captureCanvas" style="display:none;"></canvas>
+        <div id="result" class="result-container">
+            <p>No prediction yet.</p>
+        </div>
+    </div>
+-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('imageInput').addEventListener('change', handleFileSelect);
+      
+        function handleFileSelect(event) {
+          const files = event.target.files;
+          const imageContainer = document.getElementById('imageContainer');
+      
+          imageContainer.innerHTML = '';
+      
+          for (const file of files) {
+            const reader = new FileReader();
+      
+            reader.onload = function (e) {
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              img.alt = file.name;
+              img.classList.add('uploadedImage');
+      
+              imageContainer.appendChild(img);
+            };
+      
+            reader.readAsDataURL(file);
+          }
+        }
+      </script>
+    <script src="script.js"></script>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
